@@ -9,6 +9,8 @@ urlpatterns = patterns('',
     # url(r'^$', 'vclassmates.views.home', name='home'),
     # url(r'^vclassmates/', include('vclassmates.foo.urls')),
 
+    url(r'^backend/', include('vclassmates.backend.urls')),
+
     # Uncomment the admin/doc line below to enable admin documentation:
     # url(r'^admin/doc/', include('django.contrib.admindocs.urls')),
 
