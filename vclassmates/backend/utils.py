@@ -14,7 +14,7 @@ def get_raw_html(sid, password, url):
     return urllib2.urlopen(url).read()
 
 def generate_image_url(sid, name):
-    raw_url = "http://rp.sg/staffdirectory/ShowImage.aspx?id=%s-%s.JPG" % (sid, name)
+    raw_url = "http://rp.edu.sg/staffdirectory/ShowImage.aspx?id=%s-%s.JPG" % (sid, name.upper())
     return urllib.quote(raw_url, '://?=')
 
 def get_name_pairs(sid, password, url):
@@ -31,7 +31,8 @@ def get_name_pairs(sid, password, url):
     name_pairs = []
     for s in formatted_string.split('\n\n')[1:-5]:
         d = {}
-        d['sid'] = sid_regex.search(s).group(1)
+        sid = sid_regex.search(s).group(1)
+        d['sid'] = sid
         name = name_regex.search(s).group(1)
         d['name'] = name
         d['image_url'] = generate_image_url(sid, name)
